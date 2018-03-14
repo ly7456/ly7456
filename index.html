@@ -251,6 +251,18 @@
          	color: #999;
          	font-size: 14px;
          }
+	#lb_box{
+         position: relative;
+         }
+         #lb_box li{
+         position: absolute;  
+          top: 0;  
+          left: 0;
+          opacity: 0; 
+         }
+         #lb_box img{
+         width: 1000px;height: 320px;
+         }
 	</style>
 </head>
 <body>
@@ -300,7 +312,11 @@
 		</nav>
 		<!--nav结束-->
 		<div class="lb">
-			
+			<ul id='lb_box'>
+				<li class="pic1" style="opacity: 1;"><img src="images/ad2.jpg" alt=""></li>
+				<li class="pic1"><img src="images/ad3.jpg" alt=""></li>
+				<li class="pic1"><img src="images/ad4.jpg" alt=""></li>
+			</ul>
 		</div>
 		<!--图片轮播-->
 		<main class="main">
@@ -425,4 +441,26 @@
 		</div>
 	</div>
 </body>	
+	<script type="text/javascript">
+    var play="";
+	var i=index=0;
+	var lb_box=document.getElementById('lb_box');
+	var lb_pic=lb_box.getElementsByTagName('li');
+	console.log('lb_pic');
+	function show(a){
+		for(i=0;i<lb_pic.length;i++){
+			lb_pic[i].style.opacity=0;
+			lb_pic[a].style.opacity=1;
+			console.log(i,a);
+		}
+	}
+	function autoplay(){
+		play=setInterval(function(){
+        index++;
+        index>=lb_pic.length&&(index=0);
+        show(index);
+		},2000)
+	}
+	autoplay();
+</script>
 </html>
